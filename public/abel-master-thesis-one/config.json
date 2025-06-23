@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Abel master thesis",
+    "version": "pilot",
+    "authors": ["Abel de Bruijn"],
+    "date": "2025-06-23",
+    "description": "A questionnaire study for the master thesis of Abel de Bruijn.",
+    "organizations": ["Delft University of Technology"]
+  },
+  "uiConfig": {
+    "contactEmail": "a.debruijn-3@student.tudelft.nl",
+    "helpTextPath": "abel-master-thesis-one/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": false,
+    "sidebar": true
+  },
+  "components": {
+    "introduction": {
+      "type": "markdown",
+      "path": "abel-master-thesis-one/assets/introduction.md",
+      "response": []
+    },
+    "consent form": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "q1-email",
+          "prompt": "What is your email?",
+          "secondaryText": "We will use this email to contact you in case of any issues with the study.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "longText",
+          "placeholder": "Please enter your email"
+        },
+        {
+          "id": "q1.5-field",
+          "prompt": "Would you like to receive updates (up to 5 emails) about the final results, potential publications, further studies, and presentations related to this study?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"],
+          "withOther": true
+        },
+        {
+          "id": "q2-profession",
+          "prompt": "What is your profession?",
+          "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Teacher", "Student", "Professor"],
+          "withOther": true
+        },
+        {
+          "id": "q3-field",
+          "prompt": "Which field of work best describes your profession?",
+          "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": [
+            "Coputer Sciences",
+            "Mathematics",
+            "Engineering",
+            "Ecomics",
+            "Social Sciences",
+            "Medicine"
+          ],
+          "withOther": true
+        },
+        {
+          "id": "q4-consent-audio",
+          "prompt": "Do you give consent for audio recordings?",
+          "secondaryText": "Audio data will be transcribed and pseudonymized. Recordings will be deleted after transcription. The recordings will be used to enhance the study and identify areas where participants faced difficulties. The transcriptions will not be shared with any third parties.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"]
+        },
+        {
+          "id": "q5-consent-screenrecord",
+          "prompt": "Do you give consent for screen recordings?",
+          "secondaryText": "Screen recordings will be used to enhance the study and identify areas where participants faced difficulties. If the study is conducted on a computer other than the researcher's, there is a risk that the screen recording may inadvertently capture sensitive information. The recordings will be deleted after the study concludes. The recordings will not be shared with any third parties.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"]
+        },
+        {
+          "id": "q6-consent-data",
+          "prompt": "Do you give consent for local data collection?",
+          "secondaryText": "Data will be collected locally and not sent to any third parties. The data will contain mouse clicks, movements and timings. This data will be aggregated and anonimised in the final report. Local data will be removed after the study concludes (aproximately in 3-6 months)",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes"]
+        },
+        {
+          "id": "q7-consent-data",
+          "prompt": "Do you give consent for anonimised data publishment?",
+          "secondaryText": "Anonimised data may be published in the future to help other researchers. The data will not contain any personal information only selection information will be published.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"]
+        }
+      ]
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": ["introduction", "consent form", "second-question-set"]
+  }
+}
