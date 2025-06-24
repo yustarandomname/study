@@ -13,8 +13,23 @@
     "helpTextPath": "abel-master-thesis-one/assets/help.md",
     "logoPath": "revisitAssets/revisitLogoSquare.svg",
     "withProgressBar": true,
-    "autoDownloadStudy": false,
-    "sidebar": true
+    "autoDownloadStudy": true,
+    "sidebar": false
+  },
+  "baseComponents": {
+    "bar-chart": {
+      "type": "website",
+      "response": [
+        {
+          "id": "barChart",
+          "prompt": "Your selected answer:",
+          "location": "belowStimulus",
+          "type": "reactive"
+        }
+      ],
+      "path": "abel-master-thesis-one/assets/test.html",
+      "instructionLocation": "aboveStimulus"
+    }
   },
   "components": {
     "introduction": {
@@ -22,8 +37,10 @@
       "path": "abel-master-thesis-one/assets/introduction.md",
       "response": []
     },
-    "consent form": {
+    "Consent form": {
+      "nextButtonDisableTime": -1,
       "type": "questionnaire",
+      "recordAudio": true,
       "response": [
         {
           "id": "q1-email",
@@ -107,10 +124,140 @@
           "options": ["Yes", "No"]
         }
       ]
+    },
+    "Demo": {
+      "type": "video",
+      "path": "abel-master-thesis-one/assets/demo.mov",
+      "forceCompletion": true,
+      "response": []
+    },
+    "Practice": {
+      "type": "website",
+      "path": "http://localhost:5173/study-params/",
+      "response": [
+        {
+          "id": "confidence-rating",
+          "prompt": "How confident are you with your selection?",
+          "secondaryText": "Please indicate your confidence level on a scale from 0 (not confident at all) to 100 (completely confident).",
+          "required": true,
+          "location": "belowStimulus",
+          "type": "slider",
+          "options": [
+            {
+              "label": "Bad",
+              "value": 0
+            },
+            {
+              "label": "OK",
+              "value": 50
+            },
+            {
+              "label": "Good",
+              "value": 100
+            }
+          ]
+        }
+      ]
+    },
+    "bar-chart-1": {
+      "baseComponent": "bar-chart",
+      "description": "A trial for the user to click the larges bar",
+      "instruction": "Click on the largest bar",
+      "parameters": {
+        "id": "barChart",
+        "brushType": "Angle",
+        "barData": [0.32, 0.01, 1.2, 1.3, 0.82, 0.4, 0.3]
+      }
+    },
+    "Manual Brush": {
+      "type": "website",
+      "path": "http://localhost:5173/study-params?brushType=Angle",
+      "response": [
+        {
+          "id": "barChart",
+          "prompt": "Your selected answer:",
+          "required": true,
+          "location": "belowStimulus",
+          "type": "reactive"
+        },
+        {
+          "id": "brush-accuracy",
+          "prompt": "Accuracy of the brush",
+          "type": "numerical",
+          "hidden": false
+        },
+        {
+          "id": "confidence-rating",
+          "prompt": "How confident are you with your selection?",
+          "secondaryText": "Please indicate your confidence level (expected accuracy) on a scale from 0 (not confident at all) to 100 (completely confident).",
+          "required": true,
+          "location": "belowStimulus",
+          "type": "slider",
+          "options": [
+            {
+              "label": "Bad",
+              "value": 0
+            },
+            {
+              "label": "OK",
+              "value": 50
+            },
+            {
+              "label": "Good",
+              "value": 100
+            }
+          ]
+        }
+      ]
+    },
+    "Semi-automatic Brush": {
+      "type": "website",
+      "path": "https://revisit-studies.github.io/abel-master-thesis-one/brush.html",
+      "response": [
+        {
+          "id": "confidence-rating",
+          "prompt": "How confident are you with your selection?",
+          "secondaryText": "Please indicate your confidence level on a scale from 0 (not confident at all) to 100 (completely confident).",
+          "required": true,
+          "location": "belowStimulus",
+          "type": "slider",
+          "options": [
+            {
+              "label": "Bad",
+              "value": 0
+            },
+            {
+              "label": "OK",
+              "value": 50
+            },
+            {
+              "label": "Good",
+              "value": 100
+            }
+          ]
+        }
+      ]
     }
   },
   "sequence": {
     "order": "fixed",
-    "components": ["introduction", "consent form", "second-question-set"]
+    "components": [
+      "introduction",
+      "Consent form",
+      "bar-chart-1",
+      {
+        "id": "funcBlock",
+        "order": "dynamic",
+        "functionPath": "abel-master-thesis-one/assets/dynamic-manual.js",
+        "parameters": {
+          "param1": "value1",
+          "param2": "value2"
+        }
+      },
+      "Demo",
+      "Practice",
+      "Manual Brush",
+      "Semi-automatic Brush"
+    ]
   }
 }

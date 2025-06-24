@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Load revisit-communicate to be able to send data to reVISit -->
+    <!-- <script src="../../revisitUtilities/revisit-communicate.js"></script> -->
+
+    <script>
+      window.onload = function () {
+        const container = document.getElementById('container');
+
+        const button = document.getElementById('send-data');
+
+        const iframe = document.createElement('iframe');
+        iframe.id = 'iframe-test';
+        iframe.src = 'http://localhost:5173/send-message?id=iframe-test';
+        iframe.style.width = '100%';
+        iframe.style.height = '500px';
+        iframe.style.border = 'none';
+        container.appendChild(iframe);
+      };
+
+      window.addEventListener('message', function (event) {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        const sendMessage = (tag, message) => {
+          window.parent.postMessage(
+            {
+              error: false,
+              type: `@REVISIT_COMMS/${tag}`,
+              iframeId: urlParams.get('id'),
+              message,
+            },
+            '*'
+          );
+        };
+
+        if (event.data && event.data.type?.startsWith?.('@REVISIT_COMMS')) {
+          //  forward the message to reVISit
+          const tag = event.data.type.split('@REVISIT_COMMS/')[1];
+          sendMessage(tag, event.data.message);
+        } else {
+          console.log('Received message:', event.data);
+        }
+      });
+    </script>
+  </head>
+
+  <div id="container">
+    <button id="send-data">Send Data to reVISit</button>
+  </div>
+</html>
