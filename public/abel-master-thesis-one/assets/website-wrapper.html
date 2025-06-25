@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Load revisit-communicate to be able to send data to reVISit -->
+    <script src="../../revisitUtilities/revisit-communicate.js"></script>
+
+    <script>
+      const iframe = document.createElement('iframe');
+
+      window.onload = function () {
+        const container = document.getElementById('container');
+
+        const button = document.getElementById('send-data');
+
+        iframe.id = 'iframe-test';
+        iframe.style.width = '100%';
+        iframe.style.height = '500px';
+        iframe.style.border = 'none';
+        container.appendChild(iframe);
+      };
+
+      function sendMessageToParent(tag, message) {
+        Revisit.postAnswers(message);
+      }
+
+      let messageArray = [];
+      let canSend = false;
+
+      window.addEventListener('message', (event) => {
+        if (!event.data || event.data.error) {
+          console.error('Error in received message:', event.data);
+          return;
+        }
+
+        if (event.data == 'WINDOW_READY') {
+          canSend = true;
+
+          messageArray.forEach((msg) => {
+            iframe.contentWindow.postMessage(msg, '*');
+          });
+
+          messageArray = [];
+          return;
+        }
+
+        if (!event.data.type?.startsWith?.('@REVISIT_COMMS')) {
+          console.warn(
+            'Received message without @REVISIT_COMMS prefix, ignoring.',
+            event.data
+          );
+          return;
+        }
+
+        //  forward the message to reVISit
+        const tag = event.data.type.split('@REVISIT_COMMS/')[1];
+
+        console.log(
+          'Received message for tag:',
+          event.data,
+          event.data.iframeId == 'iframe-test'
+        );
+
+        if (event.data.iframeId == 'iframe-test') {
+          sendMessageToParent(tag, event.data.message);
+        } else {
+          if (
+            event.data.type === '@REVISIT_COMMS/STUDY_DATA' &&
+            event.data.message.page
+          ) {
+            iframe.src = event.data.message.page;
+          }
+
+          // Send the message to the `iframe-test` iframe
+          if (!canSend) {
+            messageArray.push(event.data);
+            return;
+          } else {
+            iframe.contentWindow.postMessage(event.data, '*');
+          }
+        }
+      });
+    </script>
+  </head>
+
+  <div id="container">
+    <button id="send-data">Send Data to reVISit</button>
+  </div>
+</html>
