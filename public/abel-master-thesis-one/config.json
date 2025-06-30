@@ -21,15 +21,50 @@
       "type": "website",
       "response": [
         {
-          "id": "value",
+          "id": "answers",
           "prompt": "Your selected answer:",
           "location": "belowStimulus",
           "type": "reactive"
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident were you during your selection proces:",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Not confident at all",
+            "Slightly confident",
+            "Somewhat confident",
+            "Neutal",
+            "Confident",
+            "Very confident",
+            "Extremely confident"
+          ]
+        },
+        {
+          "id": "difficulties",
+          "prompt": "How difficult/time-consuming was it to make a selection:",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Not difficult at all",
+            "Slightly difficult",
+            "Somewhat difficult",
+            "Neutal",
+            "Easy",
+            "Very easy",
+            "Trivial"
+          ]
         }
       ],
       "parameters": {
-        "barData": [0.1, 0.1, 1.2, 1.3, 0.82, 0.4, 0.3],
-        "maxLines": 12
+        "dataset": "Simulation-one",
+        "brushType": "Rectangle",
+        "combinationType": "Union",
+        "maxSelections": 3,
+        "lineCount": 500
       },
       "path": "abel-master-thesis-one/assets/website-wrapper.html",
       "instructionLocation": "aboveStimulus"
@@ -169,8 +204,7 @@
       "parameters": {
         "page": "http://localhost:5173/study-params",
         "id": "value",
-        "brushType": "Angle",
-        "barData": [0.5, 0.01, 1.2, 1.3, 0.82, 0.4, 0.3]
+        "brushType": "Rectangle"
       }
     },
     "Manual Brush": {

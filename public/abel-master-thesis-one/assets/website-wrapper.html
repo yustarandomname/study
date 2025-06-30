@@ -15,7 +15,7 @@
 
         iframe.id = 'iframe-test';
         iframe.style.width = '100%';
-        iframe.style.height = '500px';
+        iframe.style.height = 'calc(100dvh - 50px)';
         iframe.style.border = 'none';
         container.appendChild(iframe);
       };
@@ -83,7 +83,5 @@
     </script>
   </head>
 
-  <div id="container">
-    <button id="send-data">Send Data to reVISit</button>
-  </div>
+  <div id="container"></div>
 </html>
