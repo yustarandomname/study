@@ -17,6 +17,11 @@
     "sidebar": false
   },
   "baseComponents": {
+    "base-website-wrapper": {
+      "type": "website",
+      "path": "abel-master-thesis-one/assets/website-wrapper.html",
+      "instructionLocation": "aboveStimulus"
+    },
     "website-wrapper": {
       "type": "website",
       "response": [
@@ -25,6 +30,13 @@
           "prompt": "Your selected answer:",
           "location": "belowStimulus",
           "type": "reactive"
+        },
+        {
+          "id": "check",
+          "prompt": "How many lines were part of your final selection:",
+          "location": "belowStimulus",
+          "type": "numerical",
+          "required": true
         },
         {
           "id": "confidence",
@@ -57,6 +69,14 @@
             "Very easy",
             "Trivial"
           ]
+        },
+        {
+          "id": "improvement-suggestion",
+          "prompt": "What could be improved with this brush?",
+          "location": "belowStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your suggestions for improvement"
         }
       ],
       "parameters": {
@@ -161,67 +181,97 @@
         }
       ]
     },
+    "System check": {
+      "baseComponent": "base-website-wrapper",
+      "parameters": {
+        "page": "http://localhost:5173/system-check",
+        "id": "value"
+      },
+      "response": [
+        {
+          "id": "onscreen-shape",
+          "prompt": "Which shape is currently shown on the screen?",
+          "location": "belowStimulus",
+          "type": "dropdown",
+          "options": [
+            "Square",
+            "Circle",
+            "Triangle",
+            "Hexagon",
+            "Parallelogram"
+          ],
+          "withDontKnow": true,
+          "required": true
+        }
+      ],
+      "correctAnswer": [
+        {
+          "id": "onscreen-shape",
+          "answer": "Triangle"
+        }
+      ],
+      "provideFeedback": true,
+      "allowFailedTraining": true,
+      "trainingAttempts": 2
+    },
     "Demo": {
       "type": "video",
       "path": "abel-master-thesis-one/assets/demo.mov",
       "forceCompletion": true,
       "response": []
     },
-    "Rectangle": {
+    "WebsiteWrapper": {
       "baseComponent": "website-wrapper",
       "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Rectangle"
+        "page": "http://localhost:5173/study-params"
       }
     },
-    "Angle": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Angle"
-      }
+    "Final questionaire": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "multi-satisfaction",
+          "prompt": "Rate your satisfaction from 1 (not enjoyable) to 5 (very enjoyable) for the following items.",
+          "location": "aboveStimulus",
+          "type": "matrix-radio",
+          "answerOptions": "satisfaction5",
+          "questionOptions": [
+            "Rectangle",
+            "Angle",
+            "Length",
+            "Parallel",
+            "Horizontal",
+            "Draw line",
+            "Percentile"
+          ]
+        },
+        {
+          "id": "final-feedback",
+          "prompt": "Do you have any feedback, suggestions, or did you encounter any bugs during the study? (Optional)",
+          "location": "aboveStimulus",
+          "required": false,
+          "type": "longText",
+          "placeholder": "Your feedback, suggestions, or bug reports"
+        }
+      ]
     },
-    "Length": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Length"
-      }
-    },
-    "Parallel": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Parallel"
-      }
-    },
-    "Horizontal": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Horizontal"
-      }
-    },
-    "Draw line": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Draw line"
-      }
-    },
-    "Percentile": {
+    "Free form": {
       "baseComponent": "website-wrapper",
       "parameters": {
         "page": "http://localhost:5173/study-params",
         "id": "value",
         "brushType": "Percentile"
-      }
+      },
+      "response": [
+        {
+          "id": "free-form",
+          "prompt": "Please provide your free form comments on what you discovered.",
+          "location": "belowStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your free form answer"
+        }
+      ]
     }
   },
   "sequence": {
@@ -229,19 +279,71 @@
     "components": [
       "introduction",
       "Consent form",
+      "System check",
       "Demo",
       {
         "components": [
-          "Rectangle",
-          "Angle",
-          "Length",
-          "Parallel",
-          "Horizontal",
-          "Draw line",
-          "Percentile"
+          {
+            "id": "Angle",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Angle"
+            }
+          },
+          {
+            "id": "Rectangle-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Rectangle"
+            }
+          },
+          {
+            "id": "Parallel",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Parallel"
+            }
+          },
+          {
+            "id": "Length",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Length"
+            }
+          },
+          {
+            "id": "Horizontal",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Horizontal"
+            }
+          },
+          {
+            "id": "Drawline",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Draw line"
+            }
+          },
+          {
+            "id": "Percentile",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Percentile"
+            }
+          }
         ],
         "order": "latinSquare"
-      }
+      },
+      "Final questionaire",
+      "Free form"
     ]
   }
 }
