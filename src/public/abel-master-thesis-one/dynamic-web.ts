@@ -6,21 +6,43 @@ import {
 export default function func({
   answers,
   customParameters,
-}: JumpFunctionParameters<{ brush: string }>): JumpFunctionReturnVal {
+}: JumpFunctionParameters<{
+  brush: string;
+  automations: boolean;
+}>): JumpFunctionReturnVal {
   const answerKeys = Object.keys(answers);
 
-  const brushKey = `${customParameters.brush.replaceAll(' ', '')}`;
-  const hasDynamicBlock = answerKeys.some((key) => key.includes(brushKey));
+  function staticFirst(key: string) {
+    if (!key.startsWith(customParameters.brush)) return false;
 
-  if (hasDynamicBlock) {
+    return /_\d+_WebsiteWrapper_0+$/.test(key);
+  }
+
+  function automationFirst(key: string) {
+    if (!key.startsWith(customParameters.brush.concat('-Dynamic'))) {
+      return false;
+    }
+
+    return /_\d+_WebsiteWrapper_0+$/.test(key);
+  }
+
+  const firstEncounter = answerKeys.some(staticFirst);
+  const nthEncounter = answerKeys.some(automationFirst);
+
+  if (firstEncounter && !customParameters.automations) {
+    return { component: null };
+  }
+
+  if (nthEncounter && customParameters.automations) {
     return { component: null };
   }
 
   return {
     component: 'WebsiteWrapper',
     parameters: {
-      page: 'http://localhost:5173/study-params',
+      page: 'https://master-thesis-rho.vercel.app/study-params',
       brushType: customParameters.brush ?? 'Rectangle',
+      allowAutomations: customParameters.automations ?? false,
       cluster: Math.ceil(Math.random() * 5),
     },
   };

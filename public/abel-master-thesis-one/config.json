@@ -101,11 +101,12 @@
         {
           "id": "q1-email",
           "prompt": "What is your email?",
-          "secondaryText": "We will use this email to contact you in case of any issues with the study.",
+          "secondaryText": "We will use this email to contact you in case of any issues with the study. Or click on 'Don't know' if you do not want to provide your email.",
           "required": true,
           "location": "aboveStimulus",
           "type": "longText",
-          "placeholder": "Please enter your email"
+          "placeholder": "Please enter your email",
+          "withDontKnow": true
         },
         {
           "id": "q1.5-field",
@@ -226,12 +227,12 @@
         "page": "http://localhost:5173/study-params"
       }
     },
-    "Final questionaire": {
+    "Intermediate questionaire": {
       "type": "questionnaire",
       "response": [
         {
           "id": "multi-satisfaction",
-          "prompt": "Rate your satisfaction from 1 (not enjoyable) to 5 (very enjoyable) for the following items.",
+          "prompt": "Rate your satisfaction from 1 (highly unsatisfied) to 5 (very satisfied) for the following brushes.",
           "location": "aboveStimulus",
           "type": "matrix-radio",
           "answerOptions": "satisfaction5",
@@ -243,6 +244,49 @@
             "Horizontal",
             "Draw line",
             "Percentile"
+          ]
+        },
+        {
+          "id": "final-feedback",
+          "prompt": "Do you have any feedback, suggestions, or did you encounter any bugs during the study? (Optional)",
+          "location": "aboveStimulus",
+          "required": false,
+          "type": "longText",
+          "placeholder": "Your feedback, suggestions, or bug reports"
+        }
+      ]
+    },
+    "Final questionaire": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "multi-satisfaction",
+          "prompt": "With automations enabled, please rate your satisfaction from 1 (highly unsatisfied) to 5 (very satisfied) for the following brushes.",
+          "location": "aboveStimulus",
+          "type": "matrix-radio",
+          "answerOptions": "satisfaction5",
+          "questionOptions": [
+            "Rectangle",
+            "Angle",
+            "Length",
+            "Parallel",
+            "Horizontal",
+            "Draw line",
+            "Percentile"
+          ]
+        },
+        {
+          "id": "multi-custom",
+          "prompt": "What future enhancements do you believe would most benefit the brushes? (1 most - 5 least) [it is possible to select multiple options]",
+          "location": "aboveStimulus",
+          "type": "matrix-checkbox",
+          "answerOptions": ["Most", "More", "Somewhat", "Fewer", "Least"],
+          "questionOptions": [
+            "During selection process, preview of what lines will be in the selection",
+            "Other automation evaluation metrics (other than #lines and envelope)",
+            "Other automation inputs metrics (other than scale and offset)",
+            "Other line visualization options (for example other than color and opacity and depth)",
+            "Other line selection brushes (other than rectangle, angle, length, parallel, etc.)"
           ]
         },
         {
@@ -292,7 +336,7 @@
             }
           },
           {
-            "id": "Rectangle-Dynamic",
+            "id": "Rectangle",
             "order": "dynamic",
             "functionPath": "abel-master-thesis-one/dynamic-web.ts",
             "parameters": {
@@ -328,7 +372,7 @@
             "order": "dynamic",
             "functionPath": "abel-master-thesis-one/dynamic-web.ts",
             "parameters": {
-              "brush": "Draw line"
+              "brush": "Drawline"
             }
           },
           {
@@ -337,6 +381,76 @@
             "functionPath": "abel-master-thesis-one/dynamic-web.ts",
             "parameters": {
               "brush": "Percentile"
+            }
+          }
+        ],
+        "order": "latinSquare"
+      },
+      "Intermediate questionaire",
+      "Demo",
+      {
+        "components": [
+          {
+            "id": "Angle-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Angle",
+              "automations": true
+            }
+          },
+          {
+            "id": "Rectangle-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Rectangle",
+              "automations": true
+            }
+          },
+          {
+            "id": "Parallel-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Parallel",
+              "automations": true
+            }
+          },
+          {
+            "id": "Length-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Length",
+              "automations": true
+            }
+          },
+          {
+            "id": "Horizontal-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Horizontal",
+              "automations": true
+            }
+          },
+          {
+            "id": "Drawline-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Drawline",
+              "automations": true
+            }
+          },
+          {
+            "id": "Percentile-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Percentile",
+              "automations": true
             }
           }
         ],
