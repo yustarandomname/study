@@ -1,0 +1,464 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Abel master thesis",
+    "version": "pilot",
+    "authors": ["Abel de Bruijn"],
+    "date": "2025-06-23",
+    "description": "A questionnaire study for the master thesis of Abel de Bruijn.",
+    "organizations": ["Delft University of Technology"]
+  },
+  "uiConfig": {
+    "contactEmail": "a.debruijn-3@student.tudelft.nl",
+    "helpTextPath": "abel-master-thesis-one/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": true,
+    "sidebar": false
+  },
+  "baseComponents": {
+    "base-website-wrapper": {
+      "type": "website",
+      "path": "abel-master-thesis-one/assets/website-wrapper.html",
+      "instructionLocation": "aboveStimulus"
+    },
+    "website-wrapper": {
+      "type": "website",
+      "response": [
+        {
+          "id": "answers",
+          "prompt": "Your selected answer:",
+          "location": "belowStimulus",
+          "type": "reactive",
+          "hidden": true
+        },
+        {
+          "id": "check",
+          "prompt": "How many lines were part of your final selection:",
+          "location": "belowStimulus",
+          "type": "numerical",
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident were you during your selection proces:",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Not confident at all",
+            "Slightly confident",
+            "Somewhat confident",
+            "Neutal",
+            "Confident",
+            "Very confident",
+            "Extremely confident"
+          ]
+        },
+        {
+          "id": "difficulties",
+          "prompt": "How difficult/time-consuming was it to make a selection:",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Not difficult at all",
+            "Slightly difficult",
+            "Somewhat difficult",
+            "Neutal",
+            "Easy",
+            "Very easy",
+            "Trivial"
+          ]
+        },
+        {
+          "id": "improvement-suggestion",
+          "prompt": "What could be improved with this brush?",
+          "location": "belowStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your suggestions for improvement"
+        }
+      ],
+      "parameters": {
+        "dataset": "Simulation-one",
+        "brushType": "Rectangle",
+        "maxSelections": 3,
+        "lineCount": 500
+      },
+      "path": "abel-master-thesis-one/assets/website-wrapper.html",
+      "instructionLocation": "aboveStimulus"
+    }
+  },
+  "components": {
+    "introduction": {
+      "type": "markdown",
+      "path": "abel-master-thesis-one/assets/introduction.md",
+      "response": []
+    },
+    "Consent form": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "q1-email",
+          "prompt": "What is your email?",
+          "secondaryText": "We will use this email to contact you in case of any issues with the study. Or click on 'Don't know' if you do not want to provide your email.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "longText",
+          "placeholder": "Please enter your email",
+          "withDontKnow": true
+        },
+        {
+          "id": "q1.5-field",
+          "prompt": "Would you like to receive updates (up to 5 emails) about the final results, potential publications, further studies, and presentations related to this study?",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"],
+          "withOther": true
+        },
+        {
+          "id": "q2-profession",
+          "prompt": "What is your profession?",
+          "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Teacher", "Student", "Professor"],
+          "withOther": true
+        },
+        {
+          "id": "q3-field",
+          "prompt": "Which field of work best describes your profession?",
+          "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": [
+            "Coputer Sciences",
+            "Mathematics",
+            "Engineering",
+            "Ecomics",
+            "Social Sciences",
+            "Medicine"
+          ],
+          "withOther": true
+        },
+        {
+          "id": "q4-consent-audio",
+          "prompt": "Do you give consent for audio recordings?",
+          "secondaryText": "Audio data will be transcribed and pseudonymized. Recordings will be deleted after transcription. The recordings will be used to enhance the study and identify areas where participants faced difficulties. The transcriptions will not be shared with any third parties.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"]
+        },
+        {
+          "id": "q5-consent-screenrecord",
+          "prompt": "Do you give consent for screen recordings?",
+          "secondaryText": "Screen recordings will be used to enhance the study and identify areas where participants faced difficulties. If the study is conducted on a computer other than the researcher's, there is a risk that the screen recording may inadvertently capture sensitive information. The recordings will be deleted after the study concludes. The recordings will not be shared with any third parties.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"]
+        },
+        {
+          "id": "q6-consent-data",
+          "prompt": "Do you give consent for local data collection?",
+          "secondaryText": "Data will be collected locally and not sent to any third parties. The data will contain mouse clicks, movements and timings. This data will be aggregated and anonimised in the final report. Local data will be removed after the study concludes (aproximately in 3-6 months)",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes"]
+        },
+        {
+          "id": "q7-consent-data",
+          "prompt": "Do you give consent for anonimised data publishment?",
+          "secondaryText": "Anonimised data may be published in the future to help other researchers. The data will not contain any personal information only selection information will be published.",
+          "required": true,
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"]
+        }
+      ]
+    },
+    "System check": {
+      "baseComponent": "base-website-wrapper",
+      "parameters": {
+        "page": "http://localhost:5173/system-check",
+        "id": "value"
+      },
+      "response": [
+        {
+          "id": "onscreen-shape",
+          "prompt": "Which shape is currently shown on the screen?",
+          "location": "belowStimulus",
+          "type": "dropdown",
+          "options": [
+            "Square",
+            "Circle",
+            "Triangle",
+            "Hexagon",
+            "Parallelogram"
+          ],
+          "withDontKnow": true,
+          "required": true
+        }
+      ],
+      "correctAnswer": [
+        {
+          "id": "onscreen-shape",
+          "answer": "Triangle"
+        }
+      ],
+      "provideFeedback": true,
+      "allowFailedTraining": true,
+      "trainingAttempts": 2
+    },
+    "Demo": {
+      "type": "video",
+      "path": "abel-master-thesis-one/assets/demo.mov",
+      "forceCompletion": true,
+      "response": []
+    },
+    "WebsiteWrapper": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "page": "http://localhost:5173/study-params"
+      }
+    },
+    "Intermediate questionaire": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "multi-satisfaction",
+          "prompt": "Rate your satisfaction from 1 (highly unsatisfied) to 5 (very satisfied) for the following brushes.",
+          "location": "aboveStimulus",
+          "type": "matrix-radio",
+          "answerOptions": "satisfaction5",
+          "questionOptions": [
+            "Rectangle",
+            "Angle",
+            "Length",
+            "Parallel",
+            "Horizontal",
+            "Draw line",
+            "Percentile"
+          ]
+        },
+        {
+          "id": "final-feedback",
+          "prompt": "Do you have any feedback, suggestions, or did you encounter any bugs during the study? (Optional)",
+          "location": "aboveStimulus",
+          "required": false,
+          "type": "longText",
+          "placeholder": "Your feedback, suggestions, or bug reports"
+        }
+      ]
+    },
+    "Final questionaire": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "multi-satisfaction",
+          "prompt": "With automations enabled, please rate your satisfaction from 1 (highly unsatisfied) to 5 (very satisfied) for the following brushes.",
+          "location": "aboveStimulus",
+          "type": "matrix-radio",
+          "answerOptions": "satisfaction5",
+          "questionOptions": [
+            "Rectangle",
+            "Angle",
+            "Length",
+            "Parallel",
+            "Horizontal",
+            "Draw line",
+            "Percentile"
+          ]
+        },
+        {
+          "id": "multi-custom",
+          "prompt": "What future enhancements do you believe would most benefit the brushes? (1 most - 5 least) [it is possible to select multiple options]",
+          "location": "aboveStimulus",
+          "type": "matrix-checkbox",
+          "answerOptions": ["Most", "More", "Somewhat", "Fewer", "Least"],
+          "questionOptions": [
+            "During selection process, preview of what lines will be in the selection",
+            "Other automation evaluation metrics (other than #lines and envelope)",
+            "Other automation inputs metrics (other than scale and offset)",
+            "Other line visualization options (for example other than color and opacity and depth)",
+            "Other line selection brushes (other than rectangle, angle, length, parallel, etc.)"
+          ]
+        },
+        {
+          "id": "final-feedback",
+          "prompt": "Do you have any feedback, suggestions, or did you encounter any bugs during the study? (Optional)",
+          "location": "aboveStimulus",
+          "required": false,
+          "type": "longText",
+          "placeholder": "Your feedback, suggestions, or bug reports"
+        }
+      ]
+    },
+    "Free form": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "page": "http://localhost:5173/study-params",
+        "id": "value",
+        "brushType": "Percentile"
+      },
+      "response": [
+        {
+          "id": "free-form",
+          "prompt": "Please provide your free form comments on what you discovered.",
+          "location": "belowStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your free form answer"
+        }
+      ]
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "introduction",
+      "Consent form",
+      "System check",
+      "Demo",
+      {
+        "components": [
+          {
+            "id": "Angle",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Angle"
+            }
+          },
+          {
+            "id": "Rectangle",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Rectangle"
+            }
+          },
+          {
+            "id": "Parallel",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Parallel"
+            }
+          },
+          {
+            "id": "Length",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Length"
+            }
+          },
+          {
+            "id": "Horizontal",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Horizontal"
+            }
+          },
+          {
+            "id": "Drawline",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Drawline"
+            }
+          },
+          {
+            "id": "Percentile",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Percentile"
+            }
+          }
+        ],
+        "order": "latinSquare"
+      },
+      "Intermediate questionaire",
+      "Demo",
+      {
+        "components": [
+          {
+            "id": "Angle-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Angle",
+              "automations": true
+            }
+          },
+          {
+            "id": "Rectangle-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Rectangle",
+              "automations": true
+            }
+          },
+          {
+            "id": "Parallel-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Parallel",
+              "automations": true
+            }
+          },
+          {
+            "id": "Length-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Length",
+              "automations": true
+            }
+          },
+          {
+            "id": "Horizontal-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Horizontal",
+              "automations": true
+            }
+          },
+          {
+            "id": "Drawline-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Drawline",
+              "automations": true
+            }
+          },
+          {
+            "id": "Percentile-Dynamic",
+            "order": "dynamic",
+            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
+            "parameters": {
+              "brush": "Percentile",
+              "automations": true
+            }
+          }
+        ],
+        "order": "latinSquare"
+      },
+      "Final questionaire",
+      "Free form"
+    ]
+  }
+}
