@@ -29,7 +29,8 @@
           "id": "answers",
           "prompt": "Your selected answer:",
           "location": "belowStimulus",
-          "type": "reactive"
+          "type": "reactive",
+          "hidden": true
         },
         {
           "id": "check",
