@@ -219,7 +219,7 @@
     "Demo": {
       "type": "video",
       "path": "abel-master-thesis-one/assets/demo.mov",
-      "forceCompletion": true,
+      "forceCompletion": false,
       "response": []
     },
     "WebsiteWrapper": {
