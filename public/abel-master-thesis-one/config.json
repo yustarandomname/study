@@ -222,12 +222,6 @@
       "forceCompletion": false,
       "response": []
     },
-    "WebsiteWrapper": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params"
-      }
-    },
     "Intermediate questionaire": {
       "type": "questionnaire",
       "response": [
