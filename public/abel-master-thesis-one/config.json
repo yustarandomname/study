@@ -222,6 +222,12 @@
       "forceCompletion": false,
       "response": []
     },
+    "Demo-two": {
+      "type": "video",
+      "path": "abel-master-thesis-one/assets/demo2.mp4",
+      "forceCompletion": false,
+      "response": []
+    },
     "Intermediate questionaire": {
       "type": "questionnaire",
       "response": [
@@ -382,7 +388,7 @@
         "order": "latinSquare"
       },
       "Intermediate questionaire",
-      "Demo",
+      "Demo-two",
       {
         "components": [
           {
