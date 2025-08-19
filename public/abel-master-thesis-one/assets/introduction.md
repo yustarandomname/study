@@ -8,12 +8,6 @@ The study is divided into five parts. The first part includes a consent form to 
 
 Finally, if you have any questions about the study, feel free to ask the researcher. If you are participating in this study online without the researcher’s supervision, there is a contact button in the top right corner.
 
-## Tip
-
 ### Browser requirements
 
 This study is best viewed in a modern browser. If you are using an older browser, you may experience issues with the interface or functionality. We recommend using the latest version of Chrome (139+) for the best experience.
-
-### Minimize study browser panel
-
-![Minimize](./assets/minimize.png)
