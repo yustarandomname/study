@@ -103,36 +103,35 @@
           "id": "q1-email",
           "prompt": "What is your email?",
           "secondaryText": "We will use this email to contact you in case of any issues with the study. Or click on 'Don't know' if you do not want to provide your email.",
-          "required": true,
           "location": "aboveStimulus",
           "type": "longText",
           "placeholder": "Please enter your email",
-          "withDontKnow": true
+          "withDontKnow": true,
+          "required": true
         },
         {
-          "id": "q1.5-field",
+          "id": "q1-5-field",
           "prompt": "Would you like to receive updates (up to 5 emails) about the final results, potential publications, further studies, and presentations related to this study?",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
           "options": ["Yes", "No"],
-          "withOther": true
+          "withOther": true,
+          "required": true
         },
         {
           "id": "q2-profession",
           "prompt": "What is your profession?",
           "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
           "options": ["Teacher", "Student", "Professor"],
-          "withOther": true
+          "withOther": true,
+          "required": true
         },
         {
           "id": "q3-field",
           "prompt": "Which field of work best describes your profession?",
           "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
           "options": [
@@ -143,43 +142,44 @@
             "Social Sciences",
             "Medicine"
           ],
-          "withOther": true
+          "withOther": true,
+          "required": true
         },
         {
           "id": "q4-consent-audio",
           "prompt": "Do you give consent for audio recordings?",
           "secondaryText": "Audio data will be transcribed and pseudonymized. Recordings will be deleted after transcription. The recordings will be used to enhance the study and identify areas where participants faced difficulties. The transcriptions will not be shared with any third parties.",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
-          "options": ["Yes", "No"]
+          "options": ["Yes", "No"],
+          "required": true
         },
         {
           "id": "q5-consent-screenrecord",
           "prompt": "Do you give consent for screen recordings?",
           "secondaryText": "Screen recordings will be used to enhance the study and identify areas where participants faced difficulties. If the study is conducted on a computer other than the researcher's, there is a risk that the screen recording may inadvertently capture sensitive information. The recordings will be deleted after the study concludes. The recordings will not be shared with any third parties.",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
-          "options": ["Yes", "No"]
+          "options": ["Yes", "No"],
+          "required": true
         },
         {
           "id": "q6-consent-data",
           "prompt": "Do you give consent for local data collection?",
           "secondaryText": "Data will be collected locally and not sent to any third parties. The data will contain mouse clicks, movements and timings. This data will be aggregated and anonimised in the final report. Local data will be removed after the study concludes (aproximately in 3-6 months)",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
-          "options": ["Yes"]
+          "options": ["Yes"],
+          "required": true
         },
         {
           "id": "q7-consent-data",
           "prompt": "Do you give consent for anonimised data publishment?",
           "secondaryText": "Anonimised data may be published in the future to help other researchers. The data will not contain any personal information only selection information will be published.",
-          "required": true,
           "location": "aboveStimulus",
           "type": "radio",
-          "options": ["Yes", "No"]
+          "options": ["Yes", "No"],
+          "required": true
         }
       ]
     },
@@ -193,6 +193,7 @@
         {
           "id": "onscreen-shape",
           "prompt": "Which shape is currently shown on the screen?",
+          "secondaryText": "This study is best viewed in a modern browser. If you are using an older browser, you may experience issues with the interface or functionality. The minimum version is  We recommend using the latest version of Chrome (139+) for the best experience.",
           "location": "belowStimulus",
           "type": "dropdown",
           "options": [
