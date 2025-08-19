@@ -82,9 +82,9 @@
       ],
       "parameters": {
         "dataset": "Simulation-one",
-        "brushType": "Rectangle",
         "maxSelections": 3,
-        "lineCount": 500
+        "lineCount": 990,
+        "page": "https://master-thesis-rho.vercel.app/study-params"
       },
       "path": "abel-master-thesis-one/assets/website-wrapper.html",
       "instructionLocation": "aboveStimulus"
@@ -186,8 +186,8 @@
     "System check": {
       "baseComponent": "base-website-wrapper",
       "parameters": {
-        "page": "http://localhost:5173/system-check",
-        "id": "value"
+        "page": "https://master-thesis-rho.vercel.app/system-check",
+        "id": "system-check"
       },
       "response": [
         {
@@ -318,6 +318,104 @@
           "placeholder": "Your free form answer"
         }
       ]
+    },
+    "Rectangle": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Rectangle",
+        "allowAutomations": false
+      }
+    },
+    "Rectangle-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Rectangle",
+        "allowAutomations": true
+      }
+    },
+    "Angle": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Angle",
+        "allowAutomations": false
+      }
+    },
+    "Angle-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Angle",
+        "allowAutomations": true
+      }
+    },
+    "Length": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Length",
+        "allowAutomations": false
+      }
+    },
+    "Length-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Length",
+        "allowAutomations": true
+      }
+    },
+    "Parallel": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Parallel",
+        "allowAutomations": false
+      }
+    },
+    "Parallel-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Parallel",
+        "allowAutomations": true
+      }
+    },
+    "Horizontal": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Horizontal",
+        "allowAutomations": false
+      }
+    },
+    "Horizontal-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Horizontal",
+        "allowAutomations": true
+      }
+    },
+    "Draw-line": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Drawline",
+        "allowAutomations": false
+      }
+    },
+    "Draw-line-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Drawline",
+        "allowAutomations": true
+      }
+    },
+    "Percentile": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Percentile",
+        "allowAutomations": false
+      }
+    },
+    "Percentile-automation": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "brushType": "Percentile",
+        "allowAutomations": true
+      }
     }
   },
   "sequence": {
@@ -328,135 +426,30 @@
       "System check",
       "Demo",
       {
+        "order": "latinSquare",
         "components": [
-          {
-            "id": "Angle",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Angle"
-            }
-          },
-          {
-            "id": "Rectangle",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Rectangle"
-            }
-          },
-          {
-            "id": "Parallel",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Parallel"
-            }
-          },
-          {
-            "id": "Length",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Length"
-            }
-          },
-          {
-            "id": "Horizontal",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Horizontal"
-            }
-          },
-          {
-            "id": "Drawline",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Drawline"
-            }
-          },
-          {
-            "id": "Percentile",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Percentile"
-            }
-          }
-        ],
-        "order": "latinSquare"
+          "Rectangle",
+          "Angle",
+          "Length",
+          "Parallel",
+          "Horizontal",
+          "Draw-line",
+          "Percentile"
+        ]
       },
       "Intermediate questionaire",
       "Demo-two",
       {
+        "order": "latinSquare",
         "components": [
-          {
-            "id": "Angle-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Angle",
-              "automations": true
-            }
-          },
-          {
-            "id": "Rectangle-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Rectangle",
-              "automations": true
-            }
-          },
-          {
-            "id": "Parallel-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Parallel",
-              "automations": true
-            }
-          },
-          {
-            "id": "Length-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Length",
-              "automations": true
-            }
-          },
-          {
-            "id": "Horizontal-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Horizontal",
-              "automations": true
-            }
-          },
-          {
-            "id": "Drawline-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Drawline",
-              "automations": true
-            }
-          },
-          {
-            "id": "Percentile-Dynamic",
-            "order": "dynamic",
-            "functionPath": "abel-master-thesis-one/dynamic-web.ts",
-            "parameters": {
-              "brush": "Percentile",
-              "automations": true
-            }
-          }
-        ],
-        "order": "latinSquare"
+          "Rectangle-automation",
+          "Angle-automation",
+          "Length-automation",
+          "Parallel-automation",
+          "Horizontal-automation",
+          "Draw-line-automation",
+          "Percentile-automation"
+        ]
       },
       "Final questionaire",
       "Free form"
