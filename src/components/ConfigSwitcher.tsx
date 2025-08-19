@@ -1,12 +1,11 @@
 import {
-  Anchor, AppShell, Button, Card, Container, Divider, Flex, Image, rem, Tabs, Text,
+  Anchor, AppShell, Button, Card, Container, Divider, Flex, Image, rem, Text,
 } from '@mantine/core';
 import {
   IconAlertTriangle, IconChartHistogram, IconExternalLink, IconListCheck,
 } from '@tabler/icons-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Timestamp } from 'firebase/firestore';
-import { useNavigate, useSearchParams } from 'react-router';
 import {
   GlobalConfig, ParsedConfig, StudyConfig,
 } from '../parser/types';
@@ -200,11 +199,6 @@ export function ConfigSwitcher({
   const { storageEngine } = useStorageEngine();
   const { configsList } = globalConfig;
 
-  const demos = configsList.filter((configName) => configName.startsWith('demo-'));
-  const tutorials = configsList.filter((configName) => configName.startsWith('tutorial'));
-  const examples = configsList.filter((configName) => configName.startsWith('example-'));
-  const tests = configsList.filter((configName) => configName.startsWith('test-'));
-  const libraries = configsList.filter((configName) => configName.startsWith('library-'));
   const others = useMemo(() => configsList.filter((configName) => !configName.startsWith('demo-') && !configName.startsWith('tutorial') && !configName.startsWith('example-') && !configName.startsWith('test-') && !configName.startsWith('library-')), [configsList]);
 
   const [otherStudyVisibility, setOtherStudyVisibility] = useState<Record<string, boolean>>({});
@@ -227,10 +221,6 @@ export function ConfigSwitcher({
   const { user } = useAuth();
   const othersFiltered = useMemo(() => others.filter((configName) => otherStudyVisibility[configName] || user.isAdmin), [others, otherStudyVisibility, user]);
 
-  const [searchParams] = useSearchParams();
-  const tab = useMemo(() => searchParams.get('tab') || (othersFiltered.length > 0 ? 'Others' : 'Demos'), [othersFiltered.length, searchParams]);
-  const navigate = useNavigate();
-
   return (
     <AppShell.Main>
       <Container size="sm" px={0}>
@@ -242,49 +232,7 @@ export function ConfigSwitcher({
           src={`${PREFIX}revisitAssets/revisitLogoSquare.svg`}
           alt="reVISit"
         />
-        <Tabs variant="outline" defaultValue={others.length > 0 ? 'Others' : 'Demos'} value={tab} onChange={(value) => navigate(`/?tab=${value}`)}>
-          <Tabs.List>
-            {othersFiltered.length > 0 && (
-              <Tabs.Tab value="Others">Your Studies</Tabs.Tab>
-            )}
-            <Tabs.Tab value="Demos">Demo Studies</Tabs.Tab>
-            <Tabs.Tab value="Examples">Example Studies</Tabs.Tab>
-            <Tabs.Tab value="Tutorials">Tutorials</Tabs.Tab>
-            <Tabs.Tab value="Tests">Tests</Tabs.Tab>
-            <Tabs.Tab value="Libraries">Libraries</Tabs.Tab>
-          </Tabs.List>
-
-          {othersFiltered.length > 0 && (
-            <Tabs.Panel value="Others">
-              <StudyCards configNames={othersFiltered} studyConfigs={studyConfigs} />
-            </Tabs.Panel>
-          )}
-
-          <Tabs.Panel value="Demos">
-            <Text c="dimmed" mt="sm">These studies show off individual features of the reVISit platform.</Text>
-            <StudyCards configNames={demos} studyConfigs={studyConfigs} />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="Examples">
-            <Text c="dimmed" mt="sm">These are full studies that demonstrate the capabilities of the reVISit platform.</Text>
-            <StudyCards configNames={examples} studyConfigs={studyConfigs} />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="Tutorials">
-            <Text c="dimmed" mt="sm">These studies are designed to help you learn how to use the reVISit platform.</Text>
-            <StudyCards configNames={tutorials} studyConfigs={studyConfigs} />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="Tests">
-            <Text c="dimmed" mt="sm">These studies exist for testing purposes.</Text>
-            <StudyCards configNames={tests} studyConfigs={studyConfigs} />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="Libraries">
-            <Text c="dimmed" mt="sm">Here you can see an example of every library that we publish.</Text>
-            <StudyCards configNames={libraries} studyConfigs={studyConfigs} />
-          </Tabs.Panel>
-        </Tabs>
+        <StudyCards configNames={othersFiltered} studyConfigs={studyConfigs} />
       </Container>
     </AppShell.Main>
   );
