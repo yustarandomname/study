@@ -33,14 +33,6 @@
           "hidden": true
         },
         {
-          "id": "check",
-          "prompt": "How many lines were part of your final total selection:",
-          "secondaryText": "Can be found in the left sidebar right under the 'Lines in the total selection:'",
-          "location": "belowStimulus",
-          "type": "numerical",
-          "required": true
-        },
-        {
           "id": "confidence",
           "prompt": "How confident were you during your selection proces:",
           "secondaryText": "How close do you think you got to the expected goal?",
