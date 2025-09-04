@@ -43,7 +43,7 @@
             "Not confident at all",
             "Slightly confident",
             "Somewhat confident",
-            "Neutal",
+            "Neutral",
             "Confident",
             "Very confident",
             "Extremely confident"
@@ -56,10 +56,10 @@
           "type": "radio",
           "horizontal": true,
           "options": [
-            "Not difficult at all",
-            "Slightly difficult",
+            "Feels impossible",
+            "Hard",
             "Somewhat difficult",
-            "Neutal",
+            "Neutral",
             "Easy",
             "Very easy",
             "Trivial"
@@ -129,10 +129,10 @@
           "location": "aboveStimulus",
           "type": "radio",
           "options": [
-            "Coputer Sciences",
+            "Computer Sciences",
             "Mathematics",
             "Engineering",
-            "Ecomics",
+            "Economics",
             "Social Sciences",
             "Medicine"
           ],
@@ -295,24 +295,6 @@
         }
       ]
     },
-    "Free form": {
-      "baseComponent": "website-wrapper",
-      "parameters": {
-        "page": "http://localhost:5173/study-params",
-        "id": "value",
-        "brushType": "Percentile"
-      },
-      "response": [
-        {
-          "id": "free-form",
-          "prompt": "Please provide your free form comments on what you discovered.",
-          "location": "belowStimulus",
-          "type": "longText",
-          "required": false,
-          "placeholder": "Your free form answer"
-        }
-      ]
-    },
     "Rectangle": {
       "baseComponent": "website-wrapper",
       "parameters": {
@@ -445,8 +427,7 @@
           "Percentile-automation"
         ]
       },
-      "Final questionaire",
-      "Free form"
+      "Final questionaire"
     ]
   }
 }
