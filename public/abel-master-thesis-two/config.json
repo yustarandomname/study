@@ -1,0 +1,284 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
+  "studyMetadata": {
+    "title": "Abel master thesis final",
+    "version": "pilot",
+    "authors": ["Abel de Bruijn"],
+    "date": "2025-09-30",
+    "description": "A questionnaire study for the master thesis of Abel de Bruijn.",
+    "organizations": ["Delft University of Technology"]
+  },
+  "uiConfig": {
+    "contactEmail": "a.debruijn-3@student.tudelft.nl",
+    "helpTextPath": "abel-master-thesis-two/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "withProgressBar": true,
+    "autoDownloadStudy": true,
+    "sidebar": false
+  },
+  "baseComponents": {
+    "base-website-wrapper": {
+      "type": "website",
+      "path": "abel-master-thesis-two/assets/website-wrapper.html",
+      "instructionLocation": "aboveStimulus"
+    },
+    "website-wrapper": {
+      "type": "website",
+      "response": [
+        {
+          "id": "answers",
+          "prompt": "Your selected answer:",
+          "location": "belowStimulus",
+          "type": "reactive",
+          "hidden": false
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident were you during your selection proces:",
+          "secondaryText": "How close do you think you got to the expected goal?",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Not confident at all",
+            "Slightly confident",
+            "Somewhat confident",
+            "Neutral",
+            "Confident",
+            "Very confident",
+            "Extremely confident"
+          ]
+        },
+        {
+          "id": "difficulties",
+          "prompt": "How difficult/time-consuming was it to make a selection:",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Feels impossible",
+            "Hard",
+            "Somewhat difficult",
+            "Neutral",
+            "Easy",
+            "Very easy",
+            "Trivial"
+          ]
+        },
+        {
+          "id": "improvement-suggestion",
+          "prompt": "[NOT REQUIRED] What could be improved with this selection method?",
+          "location": "belowStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your suggestions for improvement"
+        }
+      ],
+      "path": "abel-master-thesis-two/assets/website-wrapper.html",
+      "instructionLocation": "aboveStimulus"
+    }
+  },
+  "components": {
+    "introduction": {
+      "type": "markdown",
+      "path": "abel-master-thesis-two/assets/introduction.md",
+      "response": []
+    },
+    "Consent form": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "q1-email",
+          "prompt": "What is your email?",
+          "secondaryText": "We will use this email to contact you in case of any issues with the study. Or click on 'Don't know' if you do not want to provide your email.",
+          "location": "aboveStimulus",
+          "type": "longText",
+          "placeholder": "Please enter your email",
+          "withDontKnow": true,
+          "required": true
+        },
+        {
+          "id": "q1-5-field",
+          "prompt": "Would you like to receive updates (up to 5 emails) about the final results, potential publications, further studies, and presentations related to this study?",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"],
+          "withOther": true,
+          "required": true
+        },
+        {
+          "id": "q2-profession",
+          "prompt": "What is your profession?",
+          "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Teacher", "Student", "Professor"],
+          "withOther": true,
+          "required": true
+        },
+        {
+          "id": "q3-field",
+          "prompt": "Which field of work best describes your profession?",
+          "secondaryText": "This information helps us understand the background and mitigate potential biases among the participants.",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": [
+            "Computer Sciences",
+            "Mathematics",
+            "Engineering",
+            "Economics",
+            "Social Sciences",
+            "Medicine"
+          ],
+          "withOther": true,
+          "required": true
+        },
+        {
+          "id": "q-bias",
+          "prompt": "Did you participate in any other study before conducted by Abel de Bruijn?",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"],
+          "withDontKnow": true,
+          "required": true
+        },
+        {
+          "id": "q6-consent-data",
+          "prompt": "Do you give consent for local data collection?",
+          "secondaryText": "Data will be collected locally and not sent to any third parties. The data will contain mouse clicks, movements and timings. This data will be aggregated and anonimised in the final report. Local data will be removed after the study concludes (aproximately in 3-6 months)",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes"],
+          "required": true
+        },
+        {
+          "id": "q7-consent-data",
+          "prompt": "Do you give consent for anonimised data publishment?",
+          "secondaryText": "Anonimised data may be published in the future to help other researchers. The data will not contain any personal information only selection information will be published.",
+          "location": "aboveStimulus",
+          "type": "radio",
+          "options": ["Yes", "No"],
+          "required": true
+        }
+      ]
+    },
+    "System check": {
+      "baseComponent": "base-website-wrapper",
+      "parameters": {
+        "page": "https://master-thesis-rho.vercel.app/system-check",
+        "id": "system-check"
+      },
+      "response": [
+        {
+          "id": "onscreen-shape",
+          "prompt": "Which shape is currently shown on the screen?",
+          "secondaryText": "This study is best viewed in a modern browser. If you are using an older browser, you may experience issues with the interface or functionality. The minimum version is  We recommend using the latest version of Chrome (139+) for the best experience.",
+          "location": "belowStimulus",
+          "type": "dropdown",
+          "options": [
+            "Square",
+            "Circle",
+            "Triangle",
+            "Hexagon",
+            "Parallelogram"
+          ],
+          "withDontKnow": true,
+          "required": true
+        }
+      ],
+      "correctAnswer": [
+        {
+          "id": "onscreen-shape",
+          "answer": "Triangle"
+        }
+      ],
+      "provideFeedback": true,
+      "allowFailedTraining": true,
+      "trainingAttempts": 2
+    },
+    "Demo": {
+      "type": "video",
+      "path": "abel-master-thesis-two/assets/demo.mov",
+      "forceCompletion": false,
+      "response": []
+    },
+    "Manual": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "page": "https://master-thesis-rho.vercel.app/study-part-two/manual-refinement"
+      }
+    },
+    "Semiautomatic": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "page": "https://master-thesis-rho.vercel.app/study-part-two/semi-refinement"
+      }
+    },
+    "Automatic": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "page": "https://master-thesis-rho.vercel.app/study-part-two/auto-refinement"
+      }
+    },
+    "SelfSelection": {
+      "baseComponent": "website-wrapper",
+      "parameters": {
+        "page": "https://master-thesis-rho.vercel.app/study-part-two"
+      }
+    },
+    "Questionaire": {
+      "type": "questionnaire",
+      "response": [
+        {
+          "id": "q-confidence-method",
+          "prompt": "During which selection method were you most confident?",
+          "secondaryText": "Select the method during which you felt the highest confidence.",
+          "location": "aboveStimulus",
+          "type": "dropdown",
+          "options": [
+            "Manual (Brushing)",
+            "Semiautomatic (Slider)",
+            "Automatic (Buttons)"
+          ],
+          "required": true
+        },
+        {
+          "id": "q-difficulty-method",
+          "prompt": "During which selection method did you experience the most difficulties?",
+          "secondaryText": "Select the method during which you felt the highest difficulty.",
+          "location": "aboveStimulus",
+          "type": "dropdown",
+          "options": [
+            "Manual (Brushing)",
+            "Semiautomatic (Slider)",
+            "Automatic (Buttons)"
+          ],
+          "required": true
+        },
+        {
+          "id": "q-feedback",
+          "prompt": "[NOT REQUIRED] Do you have any additional feedback or suggestions regarding the selection methods or the study in general?",
+          "location": "aboveStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your feedback and suggestions"
+        }
+      ]
+    }
+  },
+  "sequence": {
+    "order": "fixed",
+    "components": [
+      "introduction",
+      "Consent form",
+      "System check",
+      "Demo",
+      {
+        "order": "latinSquare",
+        "components": ["Manual", "Semiautomatic", "Automatic"]
+      },
+      "SelfSelection",
+      "Questionaire"
+    ]
+  }
+}
