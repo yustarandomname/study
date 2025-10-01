@@ -1,9 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/GlobalConfigSchema.json",
-  "configsList": ["abel-master-thesis-one"],
+  "configsList": ["abel-master-thesis-one", "abel-master-thesis-two"],
   "configs": {
     "abel-master-thesis-one": {
       "path": "abel-master-thesis-one/config.json"
+    },
+    "abel-master-thesis-two": {
+      "path": "abel-master-thesis-two/config.json"
     }
   }
 }
