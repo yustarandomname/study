@@ -197,9 +197,8 @@
       "trainingAttempts": 2
     },
     "Demo": {
-      "type": "video",
-      "path": "abel-master-thesis-two/assets/demo.mov",
-      "forceCompletion": false,
+      "type": "markdown",
+      "path": "abel-master-thesis-two/assets/demo.md",
       "response": []
     },
     "Manual": {
