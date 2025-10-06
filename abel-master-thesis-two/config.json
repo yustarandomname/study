@@ -30,7 +30,7 @@
           "prompt": "Your selected answer:",
           "location": "belowStimulus",
           "type": "reactive",
-          "hidden": false
+          "hidden": true
         },
         {
           "id": "confidence",
