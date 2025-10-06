@@ -219,6 +219,11 @@
         "page": "https://master-thesis-rho.vercel.app/study-part-two/auto-refinement"
       }
     },
+    "Demo-two": {
+      "type": "markdown",
+      "path": "abel-master-thesis-two/assets/demo-two.md",
+      "response": []
+    },
     "SelfSelection": {
       "baseComponent": "website-wrapper",
       "parameters": {
