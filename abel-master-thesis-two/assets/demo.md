@@ -4,7 +4,7 @@ In the next few screen you will see a pre-selection made by us as researcher. Yo
 
 ## Manual refinement
 
-![Manual refinement](manual-refinement.png)
+![Manual refinement](assets/manual-refinement.png)
 
 The manual refinement interface allows you to remove lines from a pre-selection. By default, a rectangular selection is made once you drag your mouse over the lines.
 
@@ -19,9 +19,9 @@ There are two additional brushes besides the rectangular brush. The angle brush 
 ## Semi automatic refinement
 
 The semi-automatic refinement interface allows you to remove lines from a pre-selection. You can adjust the slider from either the left or the right side. Colours indicate which lines are closer to the mode (yellow) and which lines are further away (purple).
-![semi refinement](semi-refinement.png)
+![semi refinement](assets/semi-refinement.png)
 
 ## Automatic refinement
 
 The automatic refinement interface allows you to remove lines from a pre-selection. You can adjust the buttons to either keep or remove the lines from the selection. Colours indicate which lines are in which cluster. In this example the algorithm has found 5 clusters.
-![auto refinement](auto-refinement.png)
+![auto refinement](assets/auto-refinement.png)
