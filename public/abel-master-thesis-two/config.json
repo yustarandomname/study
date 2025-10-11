@@ -76,6 +76,71 @@
       ],
       "path": "abel-master-thesis-two/assets/website-wrapper.html",
       "instructionLocation": "aboveStimulus"
+    },
+    "website-wrapper-self-selection": {
+      "type": "website",
+      "response": [
+        {
+          "id": "answers",
+          "prompt": "Your selected answer:",
+          "location": "belowStimulus",
+          "type": "reactive",
+          "hidden": true
+        },
+        {
+          "id": "completed-stages",
+          "prompt": "I confirm I have completed all stages of the study",
+          "secondaryText": "There are a total of 4 stages. Self-selection, Manual refinement, Semiautomatic refinement, Automatic refinement. You can go to the next stage by clicking the 'Next' button in the bottom right corner. If you have completed all stages, please confirm by checking this box.",
+          "location": "belowStimulus",
+          "type": "checkbox",
+          "options": ["I have completed all stages"],
+          "required": true
+        },
+        {
+          "id": "confidence",
+          "prompt": "How confident were you during your initial selection process:",
+          "secondaryText": "During the first stage (selection), how close do you think you got to the expected goal?",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Not confident at all",
+            "Slightly confident",
+            "Somewhat confident",
+            "Neutral",
+            "Confident",
+            "Very confident",
+            "Extremely confident"
+          ]
+        },
+        {
+          "id": "difficulties",
+          "prompt": "How difficult/time-consuming was it to make your own selection:",
+          "secondaryText": "During the first stage (selection), how hard was it to get to the expected goal?",
+          "location": "belowStimulus",
+          "type": "radio",
+          "horizontal": true,
+          "options": [
+            "Feels impossible",
+            "Hard",
+            "Somewhat difficult",
+            "Neutral",
+            "Easy",
+            "Very easy",
+            "Trivial"
+          ]
+        },
+        {
+          "id": "improvement-suggestion",
+          "prompt": "[NOT REQUIRED] What could be improved with this selection method?",
+          "location": "belowStimulus",
+          "type": "longText",
+          "required": false,
+          "placeholder": "Your suggestions for improvement"
+        }
+      ],
+      "path": "abel-master-thesis-two/assets/website-wrapper.html",
+      "instructionLocation": "aboveStimulus"
     }
   },
   "components": {
@@ -225,7 +290,7 @@
       "response": []
     },
     "SelfSelection": {
-      "baseComponent": "website-wrapper",
+      "baseComponent": "website-wrapper-self-selection",
       "parameters": {
         "page": "https://master-thesis-rho.vercel.app/study-part-two"
       }
